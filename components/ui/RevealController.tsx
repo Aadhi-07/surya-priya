@@ -1,28 +1,34 @@
 'use client'
 
-import React, { useEffect, useRef, forwardRef } from 'react'
+import React, {
+  useEffect,
+  useRef,
+  forwardRef,
+  ElementType,
+} from 'react'
 
-export interface RevealControllerProps extends React.HTMLAttributes<HTMLElement> {
+type RevealControllerProps<T extends ElementType> = {
   children: React.ReactNode
   reveal?: 'fade-up' | 'fade-in' | 'scale-in'
   delay?: number
   className?: string
-  tag?: React.ElementType
-}
+  as?: T
+} & React.ComponentPropsWithoutRef<T>
 
-const RevealController = forwardRef<HTMLElement, RevealControllerProps>(
-  (
+const RevealController = forwardRef(
+  <T extends ElementType = 'div'>(
     {
       children,
       reveal = 'fade-up',
       delay = 0,
       className = '',
-      tag: Tag = 'div',
+      as,
       ...props
-    },
-    ref
+    }: RevealControllerProps<T>,
+    ref: React.Ref<Element>
   ) => {
-    const localRef = useRef<HTMLElement>(null)
+    const Tag = as || 'div'
+    const localRef = useRef<Element | null>(null)
 
     useEffect(() => {
       const el = localRef.current
@@ -46,21 +52,15 @@ const RevealController = forwardRef<HTMLElement, RevealControllerProps>(
       return () => observer.disconnect()
     }, [delay])
 
-    const setRef = React.useCallback(
-      (node: HTMLElement | null) => {
-        // Assign to internal ref
-        if (localRef) {
-          ;(localRef as React.MutableRefObject<HTMLElement | null>).current = node
-        }
-        // Assign to forwarded ref
-        if (typeof ref === 'function') {
-          ref(node)
-        } else if (ref) {
-          ;(ref as React.MutableRefObject<HTMLElement | null>).current = node
-        }
-      },
-      [ref]
-    )
+    const setRef = (node: Element | null) => {
+      localRef.current = node
+
+      if (typeof ref === 'function') {
+        ref(node)
+      } else if (ref) {
+        ; (ref as React.MutableRefObject<Element | null>).current = node
+      }
+    }
 
     return (
       <Tag
