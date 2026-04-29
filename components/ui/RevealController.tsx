@@ -42,7 +42,6 @@ export default function RevealController({
   }, [delay])
 
   return (
-    // @ts-expect-error dynamic tag
     <Tag
       ref={ref as any}
       data-reveal={reveal}
