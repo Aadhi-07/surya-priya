@@ -1,53 +1,80 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, forwardRef } from 'react'
 
-interface Props {
+export interface RevealControllerProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode
   reveal?: 'fade-up' | 'fade-in' | 'scale-in'
   delay?: number
   className?: string
-  tag?: keyof JSX.IntrinsicElements
+  tag?: React.ElementType
 }
 
-export default function RevealController({
-  children,
-  reveal = 'fade-up',
-  delay = 0,
-  className = '',
-  tag: Tag = 'div',
-}: Props) {
-  const ref = useRef<HTMLElement>(null)
+const RevealController = forwardRef<HTMLElement, RevealControllerProps>(
+  (
+    {
+      children,
+      reveal = 'fade-up',
+      delay = 0,
+      className = '',
+      tag: Tag = 'div',
+      ...props
+    },
+    ref
+  ) => {
+    const localRef = useRef<HTMLElement>(null)
 
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    useEffect(() => {
+      const el = localRef.current
+      if (!el) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              el.classList.add('is-revealed')
-            }, delay)
-            observer.disconnect()
-          }
-        })
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                el.classList.add('is-revealed')
+              }, delay)
+              observer.disconnect()
+            }
+          })
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+      )
+
+      observer.observe(el)
+      return () => observer.disconnect()
+    }, [delay])
+
+    const setRef = React.useCallback(
+      (node: HTMLElement | null) => {
+        // Assign to internal ref
+        if (localRef) {
+          ;(localRef as React.MutableRefObject<HTMLElement | null>).current = node
+        }
+        // Assign to forwarded ref
+        if (typeof ref === 'function') {
+          ref(node)
+        } else if (ref) {
+          ;(ref as React.MutableRefObject<HTMLElement | null>).current = node
+        }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+      [ref]
     )
 
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [delay])
+    return (
+      <Tag
+        {...props}
+        ref={setRef}
+        data-reveal={reveal}
+        className={className ? `reveal-el ${className}` : 'reveal-el'}
+      >
+        {children}
+      </Tag>
+    )
+  }
+)
 
-  return (
-    <Tag
-      ref={ref as any}
-      data-reveal={reveal}
-      className={`reveal-el ${className}`}
-    >
-      {children}
-    </Tag>
-  )
-}
+RevealController.displayName = 'RevealController'
+
+export default RevealController
