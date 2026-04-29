@@ -42,8 +42,7 @@ export default function HeroScrubber() {
         ref={sectionRef}
         id="hero"
         className="relative h-[500vh]"
-        aria-label="Hero invitation opening animation"
-        aria-description="Scroll to open the invitation — use arrow keys on desktop to step frame by frame"
+        aria-label="Hero invitation opening animation — scroll to open or use arrow keys"
         tabIndex={0}
       >
         {/* Sticky viewport — stays pinned while the 500vh section scrolls */}
