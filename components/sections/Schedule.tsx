@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import RevealController from '@/components/ui/RevealController'
 import { content } from '@/lib/content'
 
@@ -13,8 +12,6 @@ const scheduleDetails = [
 ]
 
 export default function Schedule() {
-  const [focusIdx, setFocusIdx] = useState<number | null>(null)
-
   return (
     <section
       id="schedule"
@@ -59,8 +56,6 @@ export default function Schedule() {
                 role="listitem"
                 tabIndex={0}
                 aria-label={`${item.time}: ${item.event}`}
-                onFocus={() => setFocusIdx(i)}
-                onBlur={() => setFocusIdx(null)}
                 style={{ borderLeft: '1px solid rgba(253,250,246,0.08)' }}
               >
                 {/* Time — large Bodoni */}

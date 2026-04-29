@@ -1,25 +1,28 @@
 'use client'
 
-interface Props {
+import React, { ElementType } from 'react'
+
+type Props<T extends ElementType> = {
   text: string
-  tag?: keyof JSX.IntrinsicElements
+  as?: T
   delay?: number
   stagger?: number
   className?: string
-}
+} & React.ComponentPropsWithoutRef<T>
 
-export default function SplitText({
+export default function SplitText<T extends ElementType = 'p'>({
   text,
-  tag: Tag = 'p',
+  as,
   delay = 0,
   stagger = 35,
   className = '',
-}: Props) {
+  ...props
+}: Props<T>) {
   const words = text.split(' ')
+  const Tag = as || 'p'
 
   return (
-    // @ts-expect-error dynamic tag
-    <Tag className={`split-text ${className}`} aria-label={text}>
+    <Tag className={`split-text ${className}`} aria-label={text} {...props}>
       {words.map((word, i) => (
         <span
           key={i}

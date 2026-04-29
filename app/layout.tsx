@@ -7,9 +7,10 @@ import { content } from '@/lib/content'
 const bodoni = Bodoni_Moda({
   subsets: ['latin'],
   weight: ['400', '600'],
-  style: ['italic'],
+  style: ['normal', 'italic'],
   variable: '--font-bodoni',
   display: 'swap',
+  adjustFontFallback: false,
 })
 
 const cormorant = Cormorant_Garamond({
