@@ -20,7 +20,7 @@ module.exports = {
         cormorant: ['var(--font-cormorant)', 'serif'],
         mono: ['var(--font-mono)', 'monospace'],
         inter: ['var(--font-inter)', 'sans-serif'],
-        'great-vibes': ['var(--font-great-vibes)', 'cursive'],
+        cursive: ['var(--font-cursive)', 'cursive'],
       },
       animation: {
         'grain': 'grain 8s steps(10) infinite',

@@ -74,54 +74,8 @@ body {
   50%       { transform: translateY(-12px); }
 }
 
-/* ─── Reveal System ──────────────────────────────────────────────────────────── */
-/* All animation lives in CSS — RevealController just adds .is-revealed */
 
-.reveal-el[data-reveal="fade-up"] {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
 
-.reveal-el[data-reveal="fade-in"] {
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.reveal-el[data-reveal="scale-in"] {
-  opacity: 0;
-  transform: scale(0.94);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-el.is-revealed[data-reveal="fade-up"],
-.reveal-el.is-revealed[data-reveal="fade-in"],
-.reveal-el.is-revealed[data-reveal="scale-in"] {
-  opacity: 1;
-  transform: none;
-}
-
-/* ─── SplitText Word Reveal ──────────────────────────────────────────────────── */
-.word-wrapper {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-  line-height: 1.15;
-}
-
-.word-inner {
-  display: inline-block;
-  transform: translateY(110%);
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  /* Each word's transition-delay is set inline by SplitText */
-}
-
-.split-reveal.is-revealed .word-inner,
-.is-revealed .word-inner {
-  transform: translateY(0);
-}
 
 /* ─── Typography Scale ───────────────────────────────────────────────────────── */
 .font-bodoni { font-family: var(--font-bodoni), 'Bodoni Moda', Georgia, serif; }
@@ -289,10 +243,10 @@ nav a:hover::after {
   text-align: center;
 }
 
-/* ── Names — Great Vibes with gold foil shimmer ── */
+/* ── Names — Cursive with gold foil shimmer ── */
 .card-names {
-  font-family: var(--font-great-vibes), cursive;
-  font-size: clamp(36px, 5vw, 54px);
+  font-family: var(--font-cursive), cursive;
+  font-size: clamp(48px, 6vw, 72px);
   line-height: 1.2;
   text-align: center;
   display: flex;
@@ -316,8 +270,8 @@ nav a:hover::after {
 
 /* ── Ampersand ── */
 .card-amp {
-  font-family: var(--font-great-vibes), cursive;
-  font-size: clamp(24px, 3.5vw, 38px);
+  font-family: var(--font-cursive), cursive;
+  font-size: clamp(32px, 4vw, 48px);
   display: block;
   background: linear-gradient(135deg, #c8a020, #d4af37, #f0d060, #d4af37, #c8a020);
   -webkit-background-clip: text;
@@ -357,9 +311,9 @@ nav a:hover::after {
   text-align: center;
 }
 
-/* ── great-vibes utility class ── */
-.font-great-vibes {
-  font-family: var(--font-great-vibes), cursive;
+/* ── cursive utility class ── */
+.font-cursive {
+  font-family: var(--font-cursive), cursive;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -412,21 +366,7 @@ nav a:hover::after {
   animation: gold-shimmer 4s linear infinite;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   IMPROVEMENT #6 — SplitText fix
-   .word-inner needs .is-revealed anywhere in its ancestor chain.
-   This covers the case where RevealController is a grandparent.
-   ═══════════════════════════════════════════════════════════════════ */
-.reveal-el.is-revealed .word-inner,
-.split-reveal.is-revealed .word-inner,
-.is-revealed .word-inner {
-  transform: translateY(0) !important;
-}
 
-/* Force word-inner to be hidden until parent gets .is-revealed */
-.reveal-el:not(.is-revealed) .word-inner {
-  transform: translateY(110%);
-}
 
 /* Quote-specific font size */
 #quote .word-wrapper {
@@ -443,7 +383,7 @@ nav a:hover::after {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: var(--font-great-vibes), cursive;
+  font-family: var(--font-cursive), cursive;
   font-size: clamp(160px, 25vw, 320px);
   color: rgba(212, 175, 55, 0.04);
   pointer-events: none;

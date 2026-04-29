@@ -1,6 +1,5 @@
 'use client'
 
-import RevealController from '@/components/ui/RevealController'
 import { content } from '@/lib/content'
 
 export default function Venue() {
@@ -45,36 +44,28 @@ export default function Venue() {
 
       {/* Center content */}
       <div className="relative z-10 text-center px-6 py-40">
-        <RevealController reveal="fade-in">
-          <p className="font-mono text-[9px] tracking-[0.6em] text-ink/30 uppercase mb-8">
-            The Venue
-          </p>
-        </RevealController>
+        <p className="font-mono text-[9px] tracking-[0.6em] text-ink/30 uppercase mb-8">
+          The Venue
+        </p>
 
-        <RevealController reveal="fade-up" delay={150}>
-          <h2
-            id="venue-heading"
-            className="font-bodoni italic text-ink mb-6"
-            style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
-          >
-            {content.venue.name}
-          </h2>
-        </RevealController>
+        <h2
+          id="venue-heading"
+          className="font-bodoni italic text-ink mb-6"
+          style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
+        >
+          {content.venue.name}
+        </h2>
 
-        <RevealController reveal="fade-up" delay={250}>
-          <p className="font-cormorant text-ink/50 text-xl tracking-[0.15em]">
-            {content.venue.area}
-          </p>
-        </RevealController>
+        <p className="font-cormorant text-ink/50 text-xl tracking-[0.15em]">
+          {content.venue.area}
+        </p>
 
         {/* Gold ornament */}
-        <RevealController reveal="fade-in" delay={400}>
-          <div className="flex items-center justify-center gap-6 mt-12">
-            <div className="w-20 h-px bg-gold/30" />
-            <span className="text-gold">✦</span>
-            <div className="w-20 h-px bg-gold/30" />
-          </div>
-        </RevealController>
+        <div className="flex items-center justify-center gap-6 mt-12">
+          <div className="w-20 h-px bg-gold/30" />
+          <span className="text-gold">✦</span>
+          <div className="w-20 h-px bg-gold/30" />
+        </div>
       </div>
 
       {/* Coordinates bottom-right */}
@@ -84,3 +75,4 @@ export default function Venue() {
     </section>
   )
 }
+

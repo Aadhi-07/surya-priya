@@ -1,6 +1,5 @@
 'use client'
 
-import RevealController from '@/components/ui/RevealController'
 import { content } from '@/lib/content'
 
 // Description shown on hover for each schedule item (#5)
@@ -29,82 +28,75 @@ export default function Schedule() {
 
       <div className="max-w-5xl mx-auto">
         {/* Eyebrow */}
-        <RevealController reveal="fade-in">
-          <p className="font-mono text-[9px] tracking-[0.55em] text-ink/30 uppercase text-center mb-8">
-            Here&apos;s a sneak peek of
-          </p>
-        </RevealController>
+        <p className="font-mono text-[9px] tracking-[0.55em] text-ink/30 uppercase text-center mb-8">
+          Here&apos;s a sneak peek of
+        </p>
 
         {/* Big editorial heading */}
-        <RevealController reveal="fade-up" delay={80}>
-          <h2
-            id="schedule-heading"
-            className="font-bodoni italic text-ink text-center leading-[0.92] mb-20"
-            style={{ fontSize: 'clamp(44px, 9vw, 120px)' }}
-          >
-            Our Special Day&apos;s<br />Schedule
-          </h2>
-        </RevealController>
+        <h2
+          id="schedule-heading"
+          className="font-bodoni italic text-ink text-center leading-[0.92] mb-20"
+          style={{ fontSize: 'clamp(44px, 9vw, 120px)' }}
+        >
+          Our Special Day&apos;s<br />Schedule
+        </h2>
 
         {/* Schedule timeline — 4 columns with hover expand (#5) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-0" role="list">
           {content.schedule.map((item, i) => (
-            <RevealController key={item.time} reveal="fade-up" delay={i * 90}>
-              {/* schedule-item gets hover/focus CSS treatment (#5) */}
-              <div
-                className="schedule-item relative flex flex-col items-center py-10 px-6"
-                role="listitem"
-                tabIndex={0}
-                aria-label={`${item.time}: ${item.event}`}
-                style={{ borderLeft: '1px solid rgba(253,250,246,0.08)' }}
+            <div
+              key={item.time}
+              className="schedule-item relative flex flex-col items-center py-10 px-6"
+              role="listitem"
+              tabIndex={0}
+              aria-label={`${item.time}: ${item.event}`}
+              style={{ borderLeft: '1px solid rgba(253,250,246,0.08)' }}
+            >
+              {/* Time — large Bodoni */}
+              <p
+                className="font-bodoni italic text-ink text-center leading-none mb-5 tabular-nums"
+                style={{ fontSize: 'clamp(28px, 4vw, 52px)' }}
               >
-                {/* Time — large Bodoni */}
-                <p
-                  className="font-bodoni italic text-ink text-center leading-none mb-5 tabular-nums"
-                  style={{ fontSize: 'clamp(28px, 4vw, 52px)' }}
-                >
-                  {item.time}
+                {item.time}
+              </p>
+
+              {/* Gold dot */}
+              <div className="w-1.5 h-1.5 rounded-full bg-gold mb-5" />
+
+              {/* Event name */}
+              <p className="font-cormorant text-ink/80 text-center text-lg font-light tracking-wide mb-1">
+                {item.event}
+              </p>
+
+              {/* Sub-label */}
+              <p className="font-mono text-[8px] tracking-[0.45em] text-ink/30 uppercase text-center">
+                {item.label}
+              </p>
+
+              {/* Expandable detail (#5) */}
+              <div className="schedule-detail">
+                <p className="font-cormorant italic text-ink/40 text-center text-sm leading-snug px-2">
+                  {scheduleDetails[i]}
                 </p>
-
-                {/* Gold dot */}
-                <div className="w-1.5 h-1.5 rounded-full bg-gold mb-5" />
-
-                {/* Event name */}
-                <p className="font-cormorant text-ink/80 text-center text-lg font-light tracking-wide mb-1">
-                  {item.event}
-                </p>
-
-                {/* Sub-label */}
-                <p className="font-mono text-[8px] tracking-[0.45em] text-ink/30 uppercase text-center">
-                  {item.label}
-                </p>
-
-                {/* Expandable detail (#5) */}
-                <div className="schedule-detail">
-                  <p className="font-cormorant italic text-ink/40 text-center text-sm leading-snug px-2">
-                    {scheduleDetails[i]}
-                  </p>
-                </div>
-
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212,175,55,0.05) 0%, transparent 70%)' }}
-                />
               </div>
-            </RevealController>
+
+              {/* Hover glow */}
+              <div
+                className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212,175,55,0.05) 0%, transparent 70%)' }}
+              />
+            </div>
           ))}
         </div>
 
         {/* Bottom ornament */}
-        <RevealController reveal="scale-in" delay={400}>
-          <div className="mt-16 flex items-center gap-6">
-            <div className="flex-1 h-px bg-white/8" />
-            <span className="text-gold/40 text-xs">✦</span>
-            <div className="flex-1 h-px bg-white/8" />
-          </div>
-        </RevealController>
+        <div className="mt-16 flex items-center gap-6">
+          <div className="flex-1 h-px bg-white/8" />
+          <span className="text-gold/40 text-xs">✦</span>
+          <div className="flex-1 h-px bg-white/8" />
+        </div>
       </div>
     </section>
   )
 }
+

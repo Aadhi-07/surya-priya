@@ -1,7 +1,6 @@
 'use client'
 
 import { content } from '@/lib/content'
-import RevealController from '@/components/ui/RevealController'
 import FloatingInvite from '@/components/ui/FloatingInvite'
 
 export default function Details() {
@@ -14,55 +13,46 @@ export default function Details() {
       <div className="absolute top-0 left-0 right-0 h-px bg-white/8" />
 
       <div className="max-w-6xl mx-auto">
-        <RevealController reveal="fade-in">
-          <p className="font-mono text-[9px] tracking-[0.6em] text-ink/30 uppercase text-center mb-4">
-            The Details
-          </p>
-        </RevealController>
+        <p className="font-mono text-[9px] tracking-[0.6em] text-ink/30 uppercase text-center mb-4">
+          The Details
+        </p>
 
-        <RevealController reveal="fade-up" delay={100}>
-          <h2
-            id="details-heading"
-            className="font-bodoni italic text-center text-ink mb-20"
-            style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
-          >
-            An Evening of Celebration
-          </h2>
-        </RevealController>
+        <h2
+          id="details-heading"
+          className="font-bodoni italic text-center text-ink mb-20"
+          style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
+        >
+          An Evening of Celebration
+        </h2>
 
         {/* Three floating orbs */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center justify-items-center">
-          <RevealController reveal="scale-in" delay={0}>
-            <FloatingInvite
-              frameNum={1}
-              title={content.ceremony.label}
-              label1={content.time}
-              label2={`Dress Code · ${content.ceremony.dresscode}`}
-              bobDuration="7s"
-            />
-          </RevealController>
+          <FloatingInvite
+            frameNum={1}
+            title={content.ceremony.label}
+            label1={content.time}
+            label2={`Dress Code · ${content.ceremony.dresscode}`}
+            bobDuration="7s"
+          />
 
-          <RevealController reveal="scale-in" delay={120}>
-            <FloatingInvite
-              frameNum={120}
-              title={content.banquet.label}
-              label1={content.banquet.menuNote}
-              label2={content.banquet.note}
-              bobDuration="9s"
-            />
-          </RevealController>
+          <FloatingInvite
+            frameNum={120}
+            title={content.banquet.label}
+            label1={content.banquet.menuNote}
+            label2={content.banquet.note}
+            bobDuration="9s"
+          />
 
-          <RevealController reveal="scale-in" delay={240}>
-            <FloatingInvite
-              frameNum={240}
-              title={content.afterparty.label}
-              label1={content.afterparty.time}
-              label2={content.afterparty.venueNote}
-              bobDuration="11s"
-            />
-          </RevealController>
+          <FloatingInvite
+            frameNum={240}
+            title={content.afterparty.label}
+            label1={content.afterparty.time}
+            label2={content.afterparty.venueNote}
+            bobDuration="11s"
+          />
         </div>
       </div>
     </section>
   )
 }
+

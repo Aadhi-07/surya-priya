@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Bodoni_Moda, Cormorant_Garamond, DM_Mono, Inter, Great_Vibes } from 'next/font/google'
+import { Bodoni_Moda, Cormorant_Garamond, DM_Mono, Inter, Alex_Brush } from 'next/font/google'
 import './globals.css'
 import { content } from '@/lib/content'
 
@@ -36,11 +36,12 @@ const inter = Inter({
   display: 'swap',
 })
 
-const greatVibes = Great_Vibes({
+const alexBrush = Alex_Brush({
   weight: '400',
   subsets: ['latin'],
-  variable: '--font-great-vibes',
+  variable: '--font-cursive',
   display: 'swap',
+  adjustFontFallback: false,
 })
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${cormorant.variable} ${dmMono.variable} ${inter.variable} ${greatVibes.variable}`}>
+    <html lang="en" className={`${bodoni.variable} ${cormorant.variable} ${dmMono.variable} ${inter.variable} ${alexBrush.variable}`}>
       <head>
         {/* Preload first frame for instant above-the-fold display */}
         <link rel="preload" as="image" href="/frames/frame_0001.jpg" />

@@ -1,6 +1,5 @@
 'use client'
 
-import RevealController from '@/components/ui/RevealController'
 import { content } from '@/lib/content'
 
 const stats = [
@@ -25,28 +24,24 @@ export default function Prologue() {
 
       <div className="max-w-3xl mx-auto">
         {/* Eyebrow */}
-        <RevealController reveal="fade-in">
-          <p className="font-mono text-[9px] tracking-[0.6em] text-ink/30 uppercase text-center mb-16">
-            The Story
-          </p>
-        </RevealController>
+        <p className="font-mono text-[9px] tracking-[0.6em] text-ink/30 uppercase text-center mb-16">
+          The Story
+        </p>
 
         {/* Drop-cap paragraph */}
-        <RevealController reveal="fade-up" delay={100}>
-          <p
-            id="prologue-heading"
-            className="font-cormorant text-ink/80 text-[20px] leading-[1.9] max-w-[68ch] mx-auto text-center"
+        <p
+          id="prologue-heading"
+          className="font-cormorant text-ink/80 text-[20px] leading-[1.9] max-w-[68ch] mx-auto text-center"
+        >
+          <span
+            className="float-left font-bodoni italic text-gold leading-[0.8] mr-2"
+            style={{ fontSize: 'clamp(72px, 10vw, 120px)' }}
+            aria-hidden="true"
           >
-            <span
-              className="float-left font-bodoni italic text-gold leading-[0.8] mr-2"
-              style={{ fontSize: 'clamp(72px, 10vw, 120px)' }}
-              aria-hidden="true"
-            >
-              {firstLetter}
-            </span>
-            {restOfParagraph}
-          </p>
-        </RevealController>
+            {firstLetter}
+          </span>
+          {restOfParagraph}
+        </p>
 
         {/* Clearfix */}
         <div className="clear-both" />
@@ -61,19 +56,18 @@ export default function Prologue() {
         {/* 4-column stat grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
-            <RevealController key={stat.label} reveal="fade-up" delay={i * 80}>
-              <div className="border-t border-white/8 pt-5">
-                <p className="font-mono text-[8px] tracking-[0.4em] text-ink/40 uppercase mb-3">
-                  {stat.label}
-                </p>
-                <p className="font-cormorant font-semibold text-[22px] text-ink leading-tight">
-                  {stat.value}
-                </p>
-              </div>
-            </RevealController>
+            <div key={stat.label} className="border-t border-white/8 pt-5">
+              <p className="font-mono text-[8px] tracking-[0.4em] text-ink/40 uppercase mb-3">
+                {stat.label}
+              </p>
+              <p className="font-cormorant font-semibold text-[22px] text-ink leading-tight">
+                {stat.value}
+              </p>
+            </div>
           ))}
         </div>
       </div>
     </section>
   )
 }
+

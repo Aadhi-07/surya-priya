@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef, useEffect, useCallback } from 'react'
-import RevealController from '@/components/ui/RevealController'
 import { content } from '@/lib/content'
 
 // #6 Fix: wrap each SplitText word directly with IntersectionObserver
@@ -65,9 +64,7 @@ export default function Quote() {
       <div className="absolute top-0 left-0 right-0 h-px bg-white/8" />
 
       {/* Top gold hairline */}
-      <RevealController reveal="scale-in">
-        <div className="w-16 h-px bg-gold/40 mb-16" />
-      </RevealController>
+      <div className="w-16 h-px bg-gold/40 mb-16" />
 
       <div className="max-w-[22em] text-center space-y-1">
         {/* Lines — each has its own IntersectionObserver (#6 fix) */}
@@ -80,17 +77,16 @@ export default function Quote() {
         ))}
 
         {/* Attribution */}
-        <RevealController reveal="fade-in" delay={1400} className="block pt-10">
+        <div className="block pt-10">
           <p className="font-mono text-[10px] tracking-[0.3em] text-ink/40 uppercase">
             {content.quote.attribution}
           </p>
-        </RevealController>
+        </div>
       </div>
 
       {/* Bottom gold hairline */}
-      <RevealController reveal="scale-in" delay={800}>
-        <div className="w-16 h-px bg-gold/40 mt-16" />
-      </RevealController>
+      <div className="w-16 h-px bg-gold/40 mt-16" />
     </section>
   )
 }
+
