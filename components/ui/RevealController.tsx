@@ -44,7 +44,7 @@ export default function RevealController({
   return (
     // @ts-expect-error dynamic tag
     <Tag
-      ref={ref}
+      ref={ref as any}
       data-reveal={reveal}
       className={`reveal-el ${className}`}
     >
