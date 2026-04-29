@@ -14,7 +14,7 @@ export type RevealControllerProps<T extends ElementType> = {
   className?: string
   as?: T
 } & React.ComponentPropsWithoutRef<T>
-
+//jd
 const RevealControllerInner = <T extends ElementType = 'div'>(
   {
     children,
@@ -57,7 +57,7 @@ const RevealControllerInner = <T extends ElementType = 'div'>(
     if (typeof ref === 'function') {
       ref(node)
     } else if (ref) {
-      ;(ref as React.MutableRefObject<Element | null>).current = node
+      ; (ref as React.MutableRefObject<Element | null>).current = node
     }
   }
 
@@ -77,6 +77,6 @@ const RevealController = forwardRef(RevealControllerInner) as <T extends Element
   props: RevealControllerProps<T> & { ref?: React.ForwardedRef<Element> }
 ) => React.ReactElement | null
 
-;(RevealController as any).displayName = 'RevealController'
+  ; (RevealController as any).displayName = 'RevealController'
 
 export default RevealController
