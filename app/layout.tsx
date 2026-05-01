@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Bodoni_Moda, Cormorant_Garamond, DM_Mono, Inter, Alex_Brush } from 'next/font/google'
 import './globals.css'
 import { content } from '@/lib/content'
+import { VENUE_NAME } from '@/lib/constants'
 
 // ── Font loading ─────────────────────────────────────────────────────────────
 const bodoni = Bodoni_Moda({
@@ -47,7 +48,7 @@ const alexBrush = Alex_Brush({
 // ── Metadata ─────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
   title: `${content.couple.partner1} & ${content.couple.partner2} — Wedding Invitation`,
-  description: `You are cordially invited to the wedding of ${content.couple.partner1} and ${content.couple.partner2} on ${content.date.display} at ${content.venue.name}, ${content.venue.city}.`,
+  description: `You are cordially invited to the wedding of ${content.couple.partner1} and ${content.couple.partner2} on ${content.date.display} at ${VENUE_NAME}, Thanjavur.`,
   openGraph: {
     title: `${content.couple.partner1} & ${content.couple.partner2}`,
     description: `Wedding Invitation — ${content.date.display}`,
@@ -62,10 +63,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `${content.couple.partner1} & ${content.couple.partner2} — Wedding Invitation`,
-    description: `${content.date.display} · ${content.venue.city}`,
+    description: `${content.date.display} · Thanjavur`,
     images: ['/og-image.png'],
   },
-  icons: { icon: '/favicon.ico' },
+  icons: { icon: '/frames/og-image.jpg' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

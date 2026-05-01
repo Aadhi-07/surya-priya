@@ -1,6 +1,7 @@
 'use client'
 
 import { content } from '@/lib/content'
+import { EVENT_SCHEDULE } from '@/lib/constants'
 
 // Description shown on hover for each schedule item (#5)
 const scheduleDetails = [
@@ -41,15 +42,15 @@ export default function Schedule() {
           Our Special Day&apos;s<br />Schedule
         </h2>
 
-        {/* Schedule timeline — 4 columns with hover expand (#5) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0" role="list">
-          {content.schedule.map((item, i) => (
+        {/* Schedule timeline — with hover expand (#5) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0" role="list">
+          {EVENT_SCHEDULE.map((item, i) => (
             <div
-              key={item.time}
+              key={item.id}
               className="schedule-item relative flex flex-col items-center py-10 px-6"
               role="listitem"
               tabIndex={0}
-              aria-label={`${item.time}: ${item.event}`}
+              aria-label={`${item.time}: ${item.label}`}
               style={{ borderLeft: '1px solid rgba(253,250,246,0.08)' }}
             >
               {/* Time — large Bodoni */}
@@ -65,18 +66,18 @@ export default function Schedule() {
 
               {/* Event name */}
               <p className="font-cormorant text-ink/80 text-center text-lg font-light tracking-wide mb-1">
-                {item.event}
+                {item.label}
               </p>
 
               {/* Sub-label */}
               <p className="font-mono text-[8px] tracking-[0.45em] text-ink/30 uppercase text-center">
-                {item.label}
+                {item.sublabel}
               </p>
 
               {/* Expandable detail (#5) */}
-              <div className="schedule-detail">
+              <div className="schedule-detail mt-4">
                 <p className="font-cormorant italic text-ink/40 text-center text-sm leading-snug px-2">
-                  {scheduleDetails[i]}
+                  {item.venue}
                 </p>
               </div>
 

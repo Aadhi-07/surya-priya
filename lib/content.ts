@@ -15,13 +15,13 @@ export const content = {
     city: 'Chennai, India',
     coordinates: '13.0827° N, 80.2707° E',
     area: 'Heritage Estate',
-    travelNote: 'Valet parking available · 12 min from Chennai Airport',
+    travelNote: 'Near thirukattupali',
   },
   schedule: [
     { time: '4:30 PM', event: 'Muhurtham', label: 'Ceremony' },
     { time: '6:00 PM', event: 'Cocktails', label: 'Reception' },
-    { time: '7:30 PM', event: 'Dinner',    label: 'Grand Feast' },
-    { time: '10:00 PM', event: 'Dancing',  label: 'Celebration' },
+    { time: '7:30 PM', event: 'Dinner', label: 'Grand Feast' },
+    { time: '10:00 PM', event: 'Dancing', label: 'Celebration' },
   ],
   ceremony: {
     label: 'The Ceremony',

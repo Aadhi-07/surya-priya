@@ -1,6 +1,7 @@
 'use client'
 
 import { content } from '@/lib/content'
+import { VENUE_NAME, VENUE_ADDRESS, VENUE_LAT, VENUE_LNG } from '@/lib/constants'
 
 export default function Venue() {
   return (
@@ -53,11 +54,11 @@ export default function Venue() {
           className="font-bodoni italic text-ink mb-6"
           style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
         >
-          {content.venue.name}
+          {VENUE_NAME}
         </h2>
 
         <p className="font-cormorant text-ink/50 text-xl tracking-[0.15em]">
-          {content.venue.area}
+          {VENUE_ADDRESS}
         </p>
 
         {/* Gold ornament */}
@@ -70,7 +71,7 @@ export default function Venue() {
 
       {/* Coordinates bottom-right */}
       <div className="absolute bottom-6 right-8 font-mono text-[9px] text-ink/20 tracking-[0.3em]">
-        {content.venue.coordinates}
+        {VENUE_LAT}° N, {VENUE_LNG}° E
       </div>
     </section>
   )

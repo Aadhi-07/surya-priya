@@ -1,6 +1,7 @@
 'use client'
 
 import { content } from '@/lib/content'
+import { EVENT_SCHEDULE, VENUE_NAME } from '@/lib/constants'
 import FloatingInvite from '@/components/ui/FloatingInvite'
 
 export default function Details() {
@@ -29,25 +30,25 @@ export default function Details() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center justify-items-center">
           <FloatingInvite
             frameNum={1}
-            title={content.ceremony.label}
-            label1={content.time}
-            label2={`Dress Code · ${content.ceremony.dresscode}`}
+            title={EVENT_SCHEDULE[0].label}
+            label1={EVENT_SCHEDULE[0].sublabel}
+            label2={`${EVENT_SCHEDULE[0].time} · Black Tie`}
             bobDuration="7s"
           />
 
           <FloatingInvite
-            frameNum={120}
-            title={content.banquet.label}
-            label1={content.banquet.menuNote}
-            label2={content.banquet.note}
+            frameNum={115}
+            title={EVENT_SCHEDULE[1].label}
+            label1={EVENT_SCHEDULE[1].sublabel}
+            label2={`${EVENT_SCHEDULE[1].time} · ${VENUE_NAME}`}
             bobDuration="9s"
           />
 
           <FloatingInvite
-            frameNum={240}
-            title={content.afterparty.label}
-            label1={content.afterparty.time}
-            label2={content.afterparty.venueNote}
+            frameNum={230}
+            title="The Afterparty"
+            label1="Champagne & Dancing"
+            label2="Post Reception"
             bobDuration="11s"
           />
         </div>

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { content } from '@/lib/content'
+import { VENUE_NAME, VENUE_ADDRESS, VENUE_LAT, VENUE_LNG, VENUE_MAP_URL } from '@/lib/constants'
 
 export default function Location() {
   return (
@@ -35,21 +36,21 @@ export default function Location() {
               className="font-bodoni italic"
               style={{ fontSize: 'clamp(16px, 2vw, 20px)', color: '#1a1a1a', lineHeight: 1.3 }}
             >
-              {content.venue.name}<br />
+              {VENUE_NAME}<br />
               <span style={{ fontStyle: 'normal', fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.3em', color: '#666', textTransform: 'uppercase' }}>
-                {content.venue.area}
+                Thanjavur
               </span>
             </p>
             <p
               className="font-cormorant"
               style={{ fontSize: '14px', color: '#555', lineHeight: 1.7, fontStyle: 'italic' }}
             >
-              {content.venue.address}
+              {VENUE_ADDRESS}
             </p>
             <p
               style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.3em', color: '#888', textTransform: 'uppercase' }}
             >
-              {content.venue.city}
+              Tamil Nadu, India
             </p>
           </div>
 
@@ -63,8 +64,8 @@ export default function Location() {
             }}
           >
             <Image
-              src="/venue.png"
-              alt={`${content.venue.name} — ${content.venue.city}`}
+              src="/frames/venue.png"
+              alt={`${VENUE_NAME} — Thanjavur`}
               fill
               className="object-cover grayscale"
               sizes="360px"
@@ -90,12 +91,12 @@ export default function Location() {
               className="font-cormorant"
               style={{ fontSize: '14px', color: '#555', lineHeight: 1.7, fontStyle: 'italic' }}
             >
-              {content.venue.travelNote}
+              Ample parking available · Easy access from main road
             </p>
             <p
               style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.25em', color: '#aaa', textTransform: 'uppercase', marginTop: '12px' }}
             >
-              {content.venue.coordinates}
+              {VENUE_LAT}° N, {VENUE_LNG}° E
             </p>
           </div>
         </div>
@@ -103,7 +104,7 @@ export default function Location() {
         {/* Plan a visit button */}
         <div className="flex justify-center mt-16">
           <a
-            href={`https://maps.google.com/?q=${encodeURIComponent(content.venue.name + ', ' + content.venue.city)}`}
+            href={VENUE_MAP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3 border border-zinc-800/20 px-8 py-3 hover:border-zinc-800/40 transition-colors duration-300"

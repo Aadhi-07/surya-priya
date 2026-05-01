@@ -123,7 +123,7 @@ export default function CountdownTimer() {
         <div className="mt-16 flex items-center gap-5">
           <div className="w-12 h-px bg-gold/20" />
           <p className="font-cormorant italic text-ink/25 tracking-widest text-sm">
-            {content.date.display} · {content.venue.city}
+            {content.date.display} · Thanjavur
           </p>
           <div className="w-12 h-px bg-gold/20" />
         </div>

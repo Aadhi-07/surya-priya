@@ -3,7 +3,6 @@ import Prologue from '@/components/sections/Prologue'
 import Schedule from '@/components/sections/Schedule'
 import Location from '@/components/sections/Location'
 import Quote from '@/components/sections/Quote'
-import NavBar from '@/components/ui/NavBar'
 
 // Client-only — no SSR for canvas/timer
 const HeroScrubber = dynamic(() => import('@/components/hero/HeroScrubber'), { ssr: false })
@@ -17,8 +16,6 @@ export default function Page() {
       <RosePetals count={55} />
 
       <main>
-        {/* Sticky Nav */}
-        <NavBar />
 
         {/* 01 — Hero Scrubber (500vh scroll animation) */}
         <HeroScrubber />

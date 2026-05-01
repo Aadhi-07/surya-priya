@@ -1,12 +1,16 @@
 'use client'
 
 import { content } from '@/lib/content'
+import {
+  VENUE_NAME, VENUE_ADDRESS,
+  MRG_TIME, RECEPTION_TIME,
+} from '@/lib/constants'
 
 const stats = [
-  { label: 'The Date', value: content.date.display },
-  { label: 'The Venue', value: content.venue.name },
-  { label: 'The City', value: content.venue.city },
-  { label: 'The Time', value: content.time },
+  { label: 'The Date', value: '31 August', sub: '31/08/26' },
+  { label: 'The Venue', value: VENUE_NAME, sub: VENUE_ADDRESS },
+  { label: 'Muhurtham', value: MRG_TIME, sub: 'Ceremony' },
+  { label: 'Reception', value: RECEPTION_TIME, sub: 'Celebrations' },
 ]
 
 export default function Prologue() {
@@ -63,6 +67,11 @@ export default function Prologue() {
               <p className="font-cormorant font-semibold text-[22px] text-ink leading-tight">
                 {stat.value}
               </p>
+              {stat.sub && (
+                <p className="font-mono text-[9px] tracking-[0.2em] text-gold/80 uppercase mt-2">
+                  {stat.sub}
+                </p>
+              )}
             </div>
           ))}
         </div>
