@@ -40,8 +40,8 @@ export const content = {
   },
   prologue: `Theirs is a story written quietly — in shared silences, in coffee gone cold, in the kind of laughter that finds you when you least expect it. Today, they ask you to witness the chapter they have always been writing toward.`,
   quote: {
-    text: `Love is not just looking at each other,\nit's looking in the same direction.`,
-    attribution: '— Antoine de Saint-Exupéry',
+    text: `We love the things \nwe love for what they are.`,
+    attribution: '— Robert Frost',
   },
   rsvpDeadline: '01 January 2027',
 }
